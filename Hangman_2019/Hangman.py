@@ -117,7 +117,7 @@ label1.grid(row=2, sticky="e", )
 label2.grid(row=1, sticky="w", padx="75")
 
 # :::::::::::::::::::::::::::::FUNCTIONS:::::::::::::::::::::::::::
-print(guess)
+
 buttons()
 
 
