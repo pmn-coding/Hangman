@@ -23,7 +23,7 @@ Sollte ein Falscher Buchstabe getippt werden reduziert sich die Versuche.
 Sollten die Versuche auf 0 fallen ist das Spiel beendet.
 Sollten sie das gesamte Wort erraten bevor die Versuche auslaufen gewinnen sie.
 
-
+Um das Programm zu beenden das Fenster schließen oder auf das Feld mit EXIT klicken.
 
 ###############################################################################
 
