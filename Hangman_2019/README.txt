@@ -20,7 +20,7 @@ Anfangs sind in diesem Feld nur Unterstriche, also _, zu sehen. (z.b.: Wenn das 
 Mit dem Spielverlauf werden die Unterstriche durch die jeweiligen Buchstaben ersetzt. (z.b.: " H _ l l _ " ---> "Hallo")
 
 Sollte ein Falscher Buchstabe getippt werden reduziert sich die Versuche.
-Sollten sie auf 0 fallen ist das Spiel beendet.
+Sollten die Versuche auf 0 fallen ist das Spiel beendet.
 Sollten sie das gesamte Wort erraten bevor die Versuche auslaufen gewinnen sie.
 
 
