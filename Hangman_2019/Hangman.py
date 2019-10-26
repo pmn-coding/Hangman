@@ -11,38 +11,47 @@ def check(ndex1):
     global tries
     global rc
     global tb
+    print("------------------------------------")
     ind = True
     count = 0
     for c in guess:
         if btn_list[ndex1]["text"] == c.upper():
             count += 1
+            tries -= 1
             ind = False
             rc += 1
-            print(btn_list[ndex1]["text"]," Ist Richtig, Super!")
             lc[count-1] = (btn_list[ndex1]["text"]+ "  ")
             tb = "".join(lc)
             label1.config(text=tb)
         else:
             count += 1
             tries -= 1
-    tries += count-1
-    if tries == 0:
-        print("Du hast leider keine Versuche übrig. Das Wort war: ", guess)
-        exit()
-    elif ind == True:
+    if ind == True:
+        tries += count-1
         print(btn_list[ndex1]["text"], " Ist Falsch, Schade.")       
         print("Du hast ", tries ," Versuche übrig.")
         tl2 = "Versuche: \n" + str(tries)
         label2.config(text=tl2)
         btn_list[ndex1].config(state="disabled", background="red")
-    else:
+    if tries == 0:
+        print("Leider sind keine Versuche mehr übrig.")
+        print("Das Wort war: ", guess)
+        for i in range(26):
+            btn_list[i].config(state="disabled")
+        label3 = tk.Label(root, bg="bisque", text="Leider sind keine Versuche mehr übrig. \n Das Wort war: "+ guess, font="1", relief="groove")
+        label3.grid(row=0, sticky="e", padx="60")
+
+
+    if ind == False:
+        tries += count
         btn_list[ndex1].config(state="disabled", background="lightgreen")
+        print(btn_list[ndex1]["text"]," Ist Richtig, Super!")
     if rc == len(guess):
         print("Du hast das Wort erraten, Glückwunsch!")
         print("Das Wort war: ", guess)
         for i in range(26):
             btn_list[i].config(state="disabled")
-        label3 = tk.Label(root, bg="bisque", text="Herzlichen Glückwunsch!",font="1")
+        label3 = tk.Label(root, bg="bisque", text="Herzlichen Glückwunsch!",font="1", relief="groove")
         label3.grid(row=0, sticky="e", padx="110")
 
 def buttons():
@@ -78,8 +87,8 @@ words = open(word_file).read().splitlines()
 
 #words = ["Katze","Haus","Hase","Affe","Panzer","Igel","Taste","Buch","Wort","Schwein","Tesla","NASA", "Kuchen", "Quanten","Eisen","Kohle","Merkel"]        That was our word list before the big file
 
-guess = words[rnd.randint(0,len(words)-1)]
-
+#guess = words[rnd.randint(0,len(words)-1)]
+guess = "tttttttttth"
 
 
 guess = guess.replace("Ä", "Ae")     
@@ -98,7 +107,6 @@ for i in range(len(guess)):
 tb = "".join(lc)
 
 tl2 = "Versuche: \n" + str(tries)
-  
 
 frame1 = tk.Frame(root, width="600", height="600")                                                  #Positioning
 frame2 = tk.Frame(root, bg="grey", width="200")                                                     #buttons
