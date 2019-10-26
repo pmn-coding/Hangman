@@ -87,8 +87,8 @@ words = open(word_file).read().splitlines()
 
 #words = ["Katze","Haus","Hase","Affe","Panzer","Igel","Taste","Buch","Wort","Schwein","Tesla","NASA", "Kuchen", "Quanten","Eisen","Kohle","Merkel"]        That was our word list before the big file
 
-#guess = words[rnd.randint(0,len(words)-1)]
-guess = "tttttttttth"
+guess = words[rnd.randint(0,len(words)-1)]
+
 
 
 guess = guess.replace("Ä", "Ae")     
