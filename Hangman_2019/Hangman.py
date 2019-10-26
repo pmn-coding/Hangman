@@ -4,13 +4,11 @@ import tkinter as tk
 import random as rnd
 from time import sleep
 
+
 # :::::::::::::::::::::::::::::UNTERPROGRAMME::::::::::::::::::::::
 
 def check(ndex1):
-    global guess
-    global tries
-    global rc
-    global tb
+    global guess, tb, rc, tries
     print("------------------------------------")
     ind = True
     count = 0
@@ -26,13 +24,19 @@ def check(ndex1):
         else:
             count += 1
             tries -= 1
-    if ind == True:
+    if ind:
         tries += count-1
         print(btn_list[ndex1]["text"], " Ist Falsch, Schade.")       
         print("Du hast ", tries ," Versuche übrig.")
         tl2 = "Versuche: \n" + str(tries)
         label2.config(text=tl2)
         btn_list[ndex1].config(state="disabled", background="red")
+
+    if ind == False:
+        tries += count
+        btn_list[ndex1].config(state="disabled", background="lightgreen")
+        print(btn_list[ndex1]["text"]," Ist Richtig, Super!")
+
     if tries == 0:
         print("Leider sind keine Versuche mehr übrig.")
         print("Das Wort war: ", guess)
@@ -41,11 +45,6 @@ def check(ndex1):
         label3 = tk.Label(root, bg="bisque", text="Leider sind keine Versuche mehr übrig. \n Das Wort war: "+ guess, font="1", relief="groove")
         label3.grid(row=0, sticky="e", padx="60")
 
-
-    if ind == False:
-        tries += count
-        btn_list[ndex1].config(state="disabled", background="lightgreen")
-        print(btn_list[ndex1]["text"]," Ist Richtig, Super!")
     if rc == len(guess):
         print("Du hast das Wort erraten, Glückwunsch!")
         print("Das Wort war: ", guess)
@@ -80,16 +79,10 @@ outp.grid(row=2, column=0, sticky="e", pady=10)
 outp.config(cursor="arrow")
 outp.create_text(200,25, text=quote, tags="text", font=("",20),activefill="mediumseagreen")
 
-
-
 word_file = "dat/deutsch.txt"                   # File with about 660 words 
 words = open(word_file).read().splitlines()     
 
-#words = ["Katze","Haus","Hase","Affe","Panzer","Igel","Taste","Buch","Wort","Schwein","Tesla","NASA", "Kuchen", "Quanten","Eisen","Kohle","Merkel"]        That was our word list before the big file
-
 guess = words[rnd.randint(0,len(words)-1)]
-
-
 
 guess = guess.replace("Ä", "Ae")     
 guess = guess.replace("Ö", "Oe")   
@@ -99,7 +92,7 @@ guess = guess.replace("ä", "ae")
 guess = guess.replace("ü", "ue")
 guess = guess.replace("ö", "oe")
 
-tries = 14
+tries = 10
 lc = []
 rc = 0
 for i in range(len(guess)):
@@ -124,10 +117,39 @@ button1.grid(row=1, column="2", sticky="e", padx="50")
 label1.grid(row=2, sticky="e", )
 label2.grid(row=1, sticky="w", padx="75")
 
+# :::::::::::::::::::::::::::::IMAGES::::::::::::::::::::::::::::::
+
+# images = []
+
+# variablen = []
+# for i in range(10):
+#     variablen.append("")
+# x = 0
+# y = 0
+# for i in range(10):
+#     x += 5
+#     y += 5
+#     variablen[i] = tk.Canvas(root, name="bild"+str(i))         
+#     images.append(tk.PhotoImage(file="dat/bilder/Bild-"+str(i+1)+".png"))      
+#     variablen[i].create_image(x,y, image=images[i], anchor="e")
+#     variablen[i].config(width=x, height=y)
+
+# variablen[0].grid(row=0, column=0, sticky="e")
+# variablen[1].grid(row=0, column=0, sticky="e")
+# variablen[2].grid(row=0, column=0, sticky="e")
+# variablen[3].grid(row=0, column=0, sticky="e")
+# variablen[4].grid(row=0, column=0, sticky="e")
+# variablen[5].grid(row=0, column=0, sticky="e")
+# variablen[6].grid(row=0, column=0, sticky="e")
+# variablen[7].grid(row=0, column=0, sticky="e")
+# variablen[8].grid(row=0, column=0, sticky="e")
+# variablen[9].grid(row=0, column=0, sticky="e")
+
+#variablen[8].config(width="500")
+
 # :::::::::::::::::::::::::::::FUNCTIONS:::::::::::::::::::::::::::
 
 buttons()
-
 
 root.resizable(False, False)
 root.mainloop()
