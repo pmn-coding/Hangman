@@ -117,7 +117,7 @@ button1.grid(row=1, column="2", sticky="e", padx="50")
 label1.grid(row=2, sticky="e", )
 label2.grid(row=1, sticky="w", padx="75")
 
-# :::::::::::::::::::::::::::::IMAGES::::::::::::::::::::::::::::::
+# :::::::::::::::::::::::::::::Hangman Man::::::::::::::::::::::::::::::
 
 # images = []
 
